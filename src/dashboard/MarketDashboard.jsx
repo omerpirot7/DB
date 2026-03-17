@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Bell, Clock3 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageProvider';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import StatCard from './components/StatCard';
@@ -18,18 +19,20 @@ import {
   usersData
 } from './data';
 
-const sectionMeta = {
-  dashboard: { title: 'Dashboard Overview', subtitle: 'Control center for POS and market operations' },
-  pos: { title: 'POS System', subtitle: 'Create orders, manage cart, and checkout quickly' },
-  loans: { title: 'Loan System', subtitle: 'Monitor customer loans and payment status' },
-  products: { title: 'Products', subtitle: 'Track products, stock, and prices' },
-  categories: { title: 'Categories', subtitle: 'Manage product category groups' },
-  companies: { title: 'Companies', subtitle: 'Supplier and company directory' },
-  users: { title: 'Users', subtitle: 'Team members and roles' },
-  settings: { title: 'Settings', subtitle: 'Basic store settings and controls' }
-};
+const getSectionMeta = (t) => ({
+  dashboard: { title: t('dashboardOverview'), subtitle: t('dashboardSubtitle') },
+  pos: { title: t('posSystem'), subtitle: t('posSystemSubtitle') },
+  loans: { title: t('loanSystem'), subtitle: t('loanSystemSubtitle') },
+  products: { title: t('products'), subtitle: t('productsSubtitle') },
+  categories: { title: t('categories'), subtitle: t('categoriesSubtitle') },
+  companies: { title: t('companies'), subtitle: t('companiesSubtitle') },
+  users: { title: t('users'), subtitle: t('usersSubtitle') },
+  settings: { title: t('settings'), subtitle: t('settingsSubtitle') }
+});
 
 export default function MarketDashboard() {
+  const { t } = useLanguage();
+  const sectionMeta = getSectionMeta(t);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('dashboard');
   const [search, setSearch] = useState('');
@@ -107,12 +110,12 @@ export default function MarketDashboard() {
           <table className="min-w-full text-sm">
             <thead className="bg-slate-50 text-slate-500">
               <tr>
-                <th className="text-right px-5 py-3">Customer</th>
-                <th className="text-right px-5 py-3">Phone</th>
-                <th className="text-right px-5 py-3">Loan</th>
-                <th className="text-right px-5 py-3">Paid</th>
-                <th className="text-right px-5 py-3">Remaining</th>
-                <th className="text-right px-5 py-3">Status</th>
+                <th className="text-right px-5 py-3">{t('customer')}</th>
+                <th className="text-right px-5 py-3">{t('phone')}</th>
+                <th className="text-right px-5 py-3">{t('amount')}</th>
+                <th className="text-right px-5 py-3">{t('paid')}</th>
+                <th className="text-right px-5 py-3">{t('remaining')}</th>
+                <th className="text-right px-5 py-3">{t('status')}</th>
               </tr>
             </thead>
             <tbody>
@@ -142,7 +145,7 @@ export default function MarketDashboard() {
               <div className="mt-4 flex items-center justify-between">
                 <span className="font-semibold text-slate-800">${row.price.toLocaleString()}</span>
                 <span className={`text-xs rounded-full px-2 py-1 ${row.stock < 10 ? 'bg-rose-50 text-rose-600' : 'bg-emerald-50 text-emerald-700'}`}>
-                  Stock: {row.stock}
+                  {t('stock')}: {row.stock}
                 </span>
               </div>
             </article>
@@ -168,17 +171,17 @@ export default function MarketDashboard() {
       return (
         <div className="rounded-2xl border border-slate-100 bg-white shadow-sm p-6 space-y-4">
           <label className="block">
-            <span className="text-sm text-slate-600">Store Name</span>
+            <span className="text-sm text-slate-600">{t('storeName')}</span>
             <input defaultValue="MarketFlow Store" className="mt-1 w-full h-11 rounded-xl border border-slate-200 px-3" />
           </label>
           <label className="block">
-            <span className="text-sm text-slate-600">Currency</span>
+            <span className="text-sm text-slate-600">{t('currency')}</span>
             <select className="mt-1 w-full h-11 rounded-xl border border-slate-200 px-3 bg-white">
               <option>USD</option>
               <option>IQD</option>
             </select>
           </label>
-          <button className="h-11 px-5 rounded-xl bg-violet-600 text-white font-semibold">Save Settings</button>
+          <button className="h-11 px-5 rounded-xl bg-violet-600 text-white font-semibold">{t('saveSettings')}</button>
         </div>
       );
     }
@@ -214,7 +217,7 @@ export default function MarketDashboard() {
               </section>
 
               <section>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Feature Hub</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('quickAccessHub')}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
                   {quickFeatures.map((feature) => (
                     <FeatureCard key={feature.id} {...feature} onClick={() => jumpByFeature(feature.title)} />
@@ -225,16 +228,16 @@ export default function MarketDashboard() {
               <section className="grid grid-cols-1 xl:grid-cols-3 gap-4">
                 <article className="xl:col-span-2 rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden">
                   <div className="px-5 py-4 border-b border-slate-100">
-                    <h4 className="text-xl font-bold text-slate-900">Low Stock Products</h4>
-                    <p className="text-sm text-slate-500 mt-1">Items with quantity less than 10 units</p>
+                    <h4 className="text-xl font-bold text-slate-900">{t('lowStockProducts')}</h4>
+                    <p className="text-sm text-slate-500 mt-1">{t('itemsWithLowQty')}</p>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="min-w-full text-sm">
                       <thead className="bg-slate-50 text-slate-500">
                         <tr>
-                          <th className="text-right px-5 py-3 font-medium">Barcode</th>
-                          <th className="text-right px-5 py-3 font-medium">Product Name</th>
-                          <th className="text-right px-5 py-3 font-medium">Current Qty</th>
+                          <th className="text-right px-5 py-3 font-medium">{t('barcode')}</th>
+                          <th className="text-right px-5 py-3 font-medium">{t('productName')}</th>
+                          <th className="text-right px-5 py-3 font-medium">{t('currentQty')}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -253,8 +256,8 @@ export default function MarketDashboard() {
                 </article>
 
                 <article className="rounded-2xl border border-slate-100 bg-white shadow-sm p-5">
-                  <h4 className="text-xl font-bold text-slate-900">Live Activity</h4>
-                  <p className="text-sm text-slate-500 mt-1">System and operation notifications</p>
+                  <h4 className="text-xl font-bold text-slate-900">{t('liveActivity')}</h4>
+                  <p className="text-sm text-slate-500 mt-1">{t('systemNotifications')}</p>
                   <div className="mt-4 space-y-3">
                     {notifications.map((note) => {
                       const Icon = note.icon;
@@ -271,12 +274,12 @@ export default function MarketDashboard() {
                   </div>
 
                   <div className="mt-6 rounded-xl bg-emerald-50 border border-emerald-100 px-4 py-3 flex items-center justify-between">
-                    <span className="text-emerald-700 font-semibold">System Online</span>
+                    <span className="text-emerald-700 font-semibold">{t('systemOnline')}</span>
                     <Bell className="h-5 w-5 text-emerald-600" />
                   </div>
 
                   <div className="mt-3 rounded-xl bg-slate-50 border border-slate-100 px-4 py-3 flex items-center justify-between text-slate-500 text-sm">
-                    <span>Last sync: 03:15 AM</span>
+                    <span>{t('lastSync')}: 03:15 AM</span>
                     <Clock3 className="h-4 w-4" />
                   </div>
                 </article>
@@ -287,7 +290,7 @@ export default function MarketDashboard() {
           {activeSection === 'pos' && (
             <section className="grid grid-cols-1 xl:grid-cols-[1.1fr_2fr] gap-4">
               <article className="rounded-2xl border border-slate-100 bg-white shadow-sm p-4">
-                <h4 className="text-xl font-bold text-slate-900 mb-4">Cart</h4>
+                <h4 className="text-xl font-bold text-slate-900 mb-4">{t('cart')}</h4>
                 <div className="space-y-3 max-h-[420px] overflow-auto">
                   {cart.map((item) => (
                     <div key={item.id} className="rounded-xl border border-slate-100 bg-slate-50 p-3">
@@ -302,31 +305,31 @@ export default function MarketDashboard() {
                       </div>
                     </div>
                   ))}
-                  {cart.length === 0 && <p className="text-slate-500 text-sm">Cart is empty.</p>}
+                  {cart.length === 0 && <p className="text-slate-500 text-sm">{t('cartEmpty')}</p>}
                 </div>
 
                 <div className="border-t border-slate-100 mt-4 pt-4">
                   <p className="flex items-center justify-between text-slate-600">
-                    <span>Items</span>
+                    <span>{t('items')}</span>
                     <span>{cartTotals.totalItems}</span>
                   </p>
                   <p className="flex items-center justify-between text-xl font-bold text-slate-900 mt-2">
-                    <span>Total</span>
+                    <span>{t('total')}</span>
                     <span>${cartTotals.subtotal.toLocaleString()}</span>
                   </p>
                   <button onClick={checkout} className="mt-4 w-full h-11 rounded-xl bg-violet-600 text-white font-semibold disabled:opacity-50" disabled={cart.length === 0}>
-                    Checkout
+                    {t('checkout')}
                   </button>
                 </div>
               </article>
 
               <article className="rounded-2xl border border-slate-100 bg-white shadow-sm p-4">
-                <h4 className="text-xl font-bold text-slate-900 mb-4">Products</h4>
+                <h4 className="text-xl font-bold text-slate-900 mb-4">{t('products')}</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
                   {filteredProducts.map((item) => (
                     <button key={item.id} onClick={() => addToCart(item)} className="rounded-xl border border-slate-100 bg-slate-50 p-4 text-right hover:border-violet-200 hover:bg-violet-50 transition">
                       <p className="font-bold text-slate-900">{item.name}</p>
-                      <p className="text-xs text-slate-500 mt-1">Code: {item.code}</p>
+                      <p className="text-xs text-slate-500 mt-1">{t('code')}: {item.code}</p>
                       <p className="text-lg font-bold text-emerald-700 mt-3">${item.price.toLocaleString()}</p>
                     </button>
                   ))}
