@@ -113,7 +113,7 @@ const translations = {
     products: 'بەرهەمەکان',
     returns: 'گەڕانەوە',
     adminPanel: 'پانێڵی ئەدمین',
-    cart: 'سەبەت',
+    cart: 'سەبەتە',
     allRightsReserved: 'هەموو مافەکان پارێزراون.',
     curatedInventory: 'کۆلەکسیونی هەڵبژێردراو',
     allProducts: 'هەموو بەرهەمەکان',
