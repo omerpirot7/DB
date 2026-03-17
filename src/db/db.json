@@ -1,0 +1,126 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Professional Power Drill",
+      "description": "High-performance cordless power drill with 2 batteries.",
+      "price": 120,
+      "notes": "Good seller, check stock frequently.",
+      "discountCode": "10OFF"
+    },
+    {
+      "id": "2",
+      "name": "Camping Tent",
+      "description": "4-person weather-resistant camping tent.",
+      "price": 85.5,
+      "notes": "Seasonal item.",
+      "discountCode": "SUMMER20"
+    },
+    {
+      "id": "3",
+      "name": "Mechanic Tool Set",
+      "description": "150-piece mechanic tool set in hard case.",
+      "price": 210,
+      "notes": "",
+      "discountCode": ""
+    }
+  ],
+  "images": [
+    {
+      "id": "101",
+      "product_id": "1",
+      "filename": "drill-main.jpg",
+      "url": "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=800",
+      "alt_text": "Power Drill Main",
+      "tags": [
+        "tools",
+        "main"
+      ],
+      "uploaded_by": "admin",
+      "created_at": "2026-03-18T10:00:00Z"
+    },
+    {
+      "id": "102",
+      "product_id": "1",
+      "filename": "drill-side.jpg",
+      "url": "https://images.unsplash.com/photo-1581147036324-c10ba965eed3?auto=format&fit=crop&q=80&w=800",
+      "alt_text": "Power Drill Side Angle",
+      "tags": [
+        "tools",
+        "gallery"
+      ],
+      "uploaded_by": "admin",
+      "created_at": "2026-03-18T10:05:00Z"
+    },
+    {
+      "id": "103",
+      "product_id": "2",
+      "filename": "tent-main.jpg",
+      "url": "https://images.unsplash.com/photo-1504280390226-7888de84e2c8?auto=format&fit=crop&q=80&w=800",
+      "alt_text": "Camping Tent",
+      "tags": [
+        "outdoor",
+        "main"
+      ],
+      "uploaded_by": "admin",
+      "created_at": "2026-03-18T10:10:00Z"
+    },
+    {
+      "id": "104",
+      "product_id": "3",
+      "filename": "tools.jpg",
+      "url": "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&q=80&w=800",
+      "alt_text": "Tool Set",
+      "tags": [
+        "tools",
+        "main"
+      ],
+      "uploaded_by": "admin",
+      "created_at": "2026-03-18T10:15:00Z"
+    }
+  ],
+  "loans": [
+    {
+      "id": "1",
+      "product_id": "2",
+      "user_id": "user123",
+      "userName": "John Doe",
+      "status": "rejected",
+      "request_date": "2026-03-17T14:30:00Z",
+      "return_date": null
+    }
+  ],
+  "receipts": [
+    {
+      "id": "1",
+      "total": 118.8,
+      "tax": 10.8,
+      "date": "2026-03-16T11:00:00Z",
+      "line_items": [
+        {
+          "product_id": "1",
+          "quantity": 1,
+          "price": 120,
+          "discount": 12
+        }
+      ]
+    },
+    {
+      "id": "1773788507943",
+      "total": 130.8,
+      "tax": 10.799999999999999,
+      "date": "2026-03-17T23:01:47.943Z",
+      "line_items": [
+        {
+          "product_id": "1",
+          "name": "Professional Power Drill",
+          "quantity": 1,
+          "price": 120,
+          "discount": 0
+        }
+      ]
+    }
+  ],
+  "returns": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
