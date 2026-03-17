@@ -36,6 +36,10 @@ body {
   color: #121a20;
 }
 
+body[data-lang="ku"] {
+  direction: rtl;
+}
+
 #root {
   min-height: 100vh;
 }
