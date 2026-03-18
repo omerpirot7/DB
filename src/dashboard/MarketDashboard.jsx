@@ -87,20 +87,20 @@ export default function MarketDashboard() {
 
   const checkout = () => {
     if (cart.length === 0) return;
-    alert(`Order completed: ${cartTotals.totalItems} items, $${cartTotals.subtotal.toLocaleString()}`);
+    alert(`${t('orderCompleted')}: ${cartTotals.totalItems} ${t('items')}, $${cartTotals.subtotal.toLocaleString()}`);
     setCart([]);
   };
 
-  const jumpByFeature = (title) => {
+  const jumpByFeature = (featureId) => {
     const map = {
-      Reports: 'dashboard',
-      POS: 'pos',
-      Products: 'products',
-      Categories: 'categories',
-      Companies: 'companies',
-      Users: 'users'
+      reports: 'dashboard',
+      pos: 'pos',
+      products: 'products',
+      categories: 'categories',
+      companies: 'companies',
+      users: 'users'
     };
-    setActiveSection(map[title] || 'dashboard');
+    setActiveSection(map[featureId] || 'dashboard');
   };
 
   const renderTableSection = () => {
@@ -126,7 +126,7 @@ export default function MarketDashboard() {
                   <td className="px-5 py-4">${row.loanTotal.toLocaleString()}</td>
                   <td className="px-5 py-4 text-emerald-600">${row.paid.toLocaleString()}</td>
                   <td className="px-5 py-4 text-rose-600">${row.remaining.toLocaleString()}</td>
-                  <td className="px-5 py-4"><span className="rounded-full bg-amber-50 text-amber-700 px-3 py-1">{row.status}</span></td>
+                  <td className="px-5 py-4"><span className="rounded-full bg-amber-50 text-amber-700 px-3 py-1">{t(row.statusKey)}</span></td>
                 </tr>
               ))}
             </tbody>
@@ -212,7 +212,7 @@ export default function MarketDashboard() {
             <>
               <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                 {topStats.map((stat) => (
-                  <StatCard key={stat.id} {...stat} />
+                  <StatCard key={stat.id} {...stat} title={t(stat.titleKey)} />
                 ))}
               </section>
 
@@ -220,7 +220,7 @@ export default function MarketDashboard() {
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('quickAccessHub')}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
                   {quickFeatures.map((feature) => (
-                    <FeatureCard key={feature.id} {...feature} onClick={() => jumpByFeature(feature.title)} />
+                    <FeatureCard key={feature.id} title={t(feature.titleKey)} icon={feature.icon} onClick={() => jumpByFeature(feature.id)} />
                   ))}
                 </div>
               </section>
@@ -246,7 +246,7 @@ export default function MarketDashboard() {
                             <td className="px-5 py-4 text-slate-500">{item.sku}</td>
                             <td className="px-5 py-4 font-semibold text-slate-800">{item.name}</td>
                             <td className="px-5 py-4">
-                              <span className="inline-flex rounded-full bg-rose-50 text-rose-600 px-3 py-1 font-semibold">{item.qty} units</span>
+                              <span className="inline-flex rounded-full bg-rose-50 text-rose-600 px-3 py-1 font-semibold">{item.qty} {t('units')}</span>
                             </td>
                           </tr>
                         ))}
@@ -264,8 +264,8 @@ export default function MarketDashboard() {
                       return (
                         <div key={note.id} className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 flex items-center justify-between">
                           <div>
-                            <p className="font-semibold text-slate-800">{note.title}</p>
-                            <p className="text-xs text-slate-500 mt-1">{note.time}</p>
+                            <p className="font-semibold text-slate-800">{t(note.titleKey)}</p>
+                            <p className="text-xs text-slate-500 mt-1">{t(note.timeKey)}</p>
                           </div>
                           <Icon className="h-5 w-5 text-violet-600" />
                         </div>

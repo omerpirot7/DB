@@ -16,30 +16,30 @@ import {
 } from 'lucide-react';
 
 export const sidebarItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'pos', label: 'POS', icon: CreditCard },
-  { id: 'loans', label: 'Loan System', icon: Wallet },
-  { id: 'products', label: 'Products', icon: Package },
-  { id: 'categories', label: 'Categories', icon: Boxes },
-  { id: 'companies', label: 'Companies', icon: Building2 },
-  { id: 'users', label: 'Users', icon: Users },
-  { id: 'settings', label: 'Settings', icon: Settings }
+  { id: 'dashboard', labelKey: 'dashboard', icon: LayoutDashboard },
+  { id: 'pos', labelKey: 'posLabel', icon: CreditCard },
+  { id: 'loans', labelKey: 'loanSystemLabel', icon: Wallet },
+  { id: 'products', labelKey: 'products', icon: Package },
+  { id: 'categories', labelKey: 'categories', icon: Boxes },
+  { id: 'companies', labelKey: 'companies', icon: Building2 },
+  { id: 'users', labelKey: 'users', icon: Users },
+  { id: 'settings', labelKey: 'settings', icon: Settings }
 ];
 
 export const topStats = [
-  { id: 1, title: 'Total Orders', value: '4,128', icon: ClipboardList, tone: 'from-sky-50 to-sky-100 text-sky-700' },
-  { id: 2, title: 'Total Sales', value: '$63,500', icon: Wallet, tone: 'from-emerald-50 to-emerald-100 text-emerald-700' },
-  { id: 3, title: 'Products', value: '112', icon: Package, tone: 'from-violet-50 to-violet-100 text-violet-700' },
-  { id: 4, title: 'Alerts', value: '2', icon: AlertTriangle, tone: 'from-amber-50 to-amber-100 text-amber-700' }
+  { id: 1, titleKey: 'totalOrdersLabel', value: '4,128', icon: ClipboardList, tone: 'from-sky-50 to-sky-100 text-sky-700' },
+  { id: 2, titleKey: 'totalSalesLabel', value: '$63,500', icon: Wallet, tone: 'from-emerald-50 to-emerald-100 text-emerald-700' },
+  { id: 3, titleKey: 'totalProductsLabel', value: '112', icon: Package, tone: 'from-violet-50 to-violet-100 text-violet-700' },
+  { id: 4, titleKey: 'alertsLabel', value: '2', icon: AlertTriangle, tone: 'from-amber-50 to-amber-100 text-amber-700' }
 ];
 
 export const quickFeatures = [
-  { id: 1, title: 'Reports', icon: BarChart3 },
-  { id: 2, title: 'POS', icon: CreditCard },
-  { id: 3, title: 'Products', icon: Package },
-  { id: 4, title: 'Categories', icon: ShoppingBasket },
-  { id: 5, title: 'Companies', icon: Building2 },
-  { id: 6, title: 'Users', icon: UserCog }
+  { id: 'reports', titleKey: 'reports', icon: BarChart3 },
+  { id: 'pos', titleKey: 'posLabel', icon: CreditCard },
+  { id: 'products', titleKey: 'products', icon: Package },
+  { id: 'categories', titleKey: 'categories', icon: ShoppingBasket },
+  { id: 'companies', titleKey: 'companies', icon: Building2 },
+  { id: 'users', titleKey: 'users', icon: UserCog }
 ];
 
 export const lowStockItems = [
@@ -49,8 +49,8 @@ export const lowStockItems = [
 ];
 
 export const notifications = [
-  { id: 1, title: 'POS terminal synced', time: '2 min ago', icon: BellRing },
-  { id: 2, title: 'Low stock warning', time: '8 min ago', icon: AlertTriangle }
+  { id: 1, titleKey: 'posSynced', timeKey: 'time2MinAgo', icon: BellRing },
+  { id: 2, titleKey: 'lowStockWarning', timeKey: 'time8MinAgo', icon: AlertTriangle }
 ];
 
 export const posProducts = [
@@ -63,8 +63,8 @@ export const posProducts = [
 ];
 
 export const loansData = [
-  { id: 'l1', customer: 'Ibrahim Qadir', phone: '07501234567', loanTotal: 12000, paid: 5750, remaining: 6250, status: 'Pending' },
-  { id: 'l2', customer: 'Sara Karim', phone: '07507894512', loanTotal: 8300, paid: 2000, remaining: 6300, status: 'Pending' }
+  { id: 'l1', customer: 'Ibrahim Qadir', phone: '07501234567', loanTotal: 12000, paid: 5750, remaining: 6250, statusKey: 'pending' },
+  { id: 'l2', customer: 'Sara Karim', phone: '07507894512', loanTotal: 8300, paid: 2000, remaining: 6300, statusKey: 'pending' }
 ];
 
 export const productsData = [

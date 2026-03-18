@@ -1,6 +1,9 @@
 import { LogOut, Menu } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageProvider';
 
 export default function Sidebar({ items, open, onToggle, activeId, onSelect }) {
+  const { t } = useLanguage();
+
   return (
     <>
       <button
@@ -21,7 +24,7 @@ export default function Sidebar({ items, open, onToggle, activeId, onSelect }) {
       >
         <div className="px-6 py-6 border-b border-slate-100">
           <h1 className="text-3xl font-bold text-slate-900">MarketFlow</h1>
-          <p className="text-sm text-slate-500 mt-1">Market Management</p>
+          <p className="text-sm text-slate-500 mt-1">{t('marketManagement')}</p>
         </div>
 
         <nav className="px-4 py-4 space-y-1 flex-1 overflow-y-auto">
@@ -36,7 +39,7 @@ export default function Sidebar({ items, open, onToggle, activeId, onSelect }) {
                 }}
                 className={`w-full flex items-center justify-between rounded-xl px-4 py-3 transition ${activeId === item.id ? 'bg-violet-50 text-violet-700 border border-violet-100' : 'text-slate-600 hover:bg-slate-50'}`}
               >
-                <span className="font-medium">{item.label}</span>
+                <span className="font-medium">{t(item.labelKey)}</span>
                 <Icon className="h-5 w-5" />
               </button>
             );
@@ -47,7 +50,7 @@ export default function Sidebar({ items, open, onToggle, activeId, onSelect }) {
           <div className="rounded-2xl bg-slate-50 px-4 py-3 flex items-center justify-between">
             <div>
               <p className="font-semibold text-slate-900">Ibrahim Qadir</p>
-              <p className="text-xs text-slate-500">Admin</p>
+              <p className="text-xs text-slate-500">{t('adminRole')}</p>
             </div>
             <button className="h-10 w-10 rounded-lg bg-white border border-slate-200 text-rose-500 grid place-items-center">
               <LogOut className="h-4 w-4" />

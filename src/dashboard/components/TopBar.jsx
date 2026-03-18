@@ -2,7 +2,7 @@ import { Search, Globe } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageProvider';
 
 export default function TopBar({ title, subtitle, searchValue, onSearchChange }) {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <div className="rounded-2xl border border-slate-100 bg-white px-5 py-4 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -17,7 +17,7 @@ export default function TopBar({ title, subtitle, searchValue, onSearchChange })
             type="search"
             value={searchValue}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search by name, code, or phone..."
+            placeholder={t('searchPlaceholder')}
             className="w-full h-11 rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-10 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-violet-300"
           />
         </label>
